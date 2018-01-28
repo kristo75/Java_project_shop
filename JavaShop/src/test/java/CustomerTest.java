@@ -1,4 +1,5 @@
 import Buyer.Customer;
+import Shop.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     Customer customer;
+    Item item;
 
 
     @Before
@@ -35,6 +37,17 @@ public class CustomerTest {
     public void setCustomerWallet(){
         customer.setCustomerWallet(450.0);
         assertEquals(450.0, customer.getCustomerWallet(), 0.1);
+    }
+
+    @Test
+    public void customersShoppingCartStartsEmpty(){
+        assertEquals(0, customer.getShoppingCartItemCount());
+    }
+
+    @Test
+    public void canAddItemToShoppingCart(){
+        customer.addItemToShoppingCart(item);
+        assertEquals(1, customer.getShoppingCartItemCount());
     }
 
 

@@ -41,4 +41,8 @@ public class Customer {
     public void addItemToShoppingCart(Item item){
         this.shoppingCart.add(item);
     }
+
+    public void removeItemFromShoppingCart(Item item) {
+        this.shoppingCart.remove(item);
+    }
 }

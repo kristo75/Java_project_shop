@@ -50,6 +50,14 @@ public class CustomerTest {
         assertEquals(1, customer.getShoppingCartItemCount());
     }
 
+    @Test
+    public void canRemoveItemFromShoppingCart(){
+        customer.addItemToShoppingCart(item);
+        assertEquals(1, customer.getShoppingCartItemCount());
+        customer.removeItemFromShoppingCart(item);
+        assertEquals(0, customer.getShoppingCartItemCount());
+    }
+
 
 
     }

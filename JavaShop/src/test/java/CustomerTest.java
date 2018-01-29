@@ -9,6 +9,7 @@ public class CustomerTest {
 
     Customer customer;
     Item item;
+    private double wallet;
 
 
     @Before
@@ -59,8 +60,29 @@ public class CustomerTest {
     }
 
 
-
+    @Test
+    public void getShoppingCartItemCount() {
+        customer.addItemToShoppingCart(item);
+        assertEquals(1, customer.getShoppingCartItemCount());
     }
+
+
+//    @Test
+//    public void buyItem() {
+//        double itemPrice = item.getSellPrice();
+//        this.wallet -= itemPrice;
+//    }
+//
+//    @Test
+//    public void canReturnItem(){
+//        customer.addItemToShoppingCart(item);
+//        customer.buyItem(item);
+//        assertEquals(300, customer.getCustomerWallet(),0.1);
+//        customer.removeItemFromShoppingCart(item);
+//        customer.refundItem(item);
+//        assertEquals(300, customer.getCustomerWallet(),0.1);
+//    }
+}
 
 
 

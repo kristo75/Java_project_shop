@@ -51,6 +51,11 @@ public class Customer {
         this.wallet -=itemPrice;
     }
 
+    public void refundItem(Item item) {
+        double itemPrice = item.getSellPrice();
+        this.wallet += itemPrice;
+    }
+
 
 
 }

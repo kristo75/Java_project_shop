@@ -1,5 +1,6 @@
 import Buyer.Customer;
 import Shop.Item;
+import Shop.Till;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +10,6 @@ public class CustomerTest {
 
     Customer customer;
     Item item;
-    private double wallet;
 
 
     @Before
@@ -76,6 +76,16 @@ public class CustomerTest {
 
     }
 
+
+    @Test
+    public void canReturnItem(){
+        customer.addItemToShoppingCart(item);
+        customer.buyItem(item);
+        assertEquals(400, customer.getCustomerWallet(),0.1);
+        customer.removeItemFromShoppingCart(item);
+        customer.refundItem(item);
+        assertEquals(500, customer.getCustomerWallet(),0.1);
+    }
 }
 
 

@@ -46,13 +46,11 @@ public class Customer {
         this.shoppingCart.remove(item);
     }
 
-    public void buyItem(Item item){
+    public void buyItem(Item item) {
         double itemPrice = item.getSellPrice();
-        this.wallet -= itemPrice;
+        this.wallet -=itemPrice;
     }
 
-    public void refundItem(Item item) {
-        double itemPrice = item.getSellPrice();
-        this.wallet += itemPrice;
-    }
+
+
 }

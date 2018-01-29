@@ -15,6 +15,7 @@ public class CustomerTest {
     @Before
     public void before(){
         customer = new Customer("Kris Anderson", 500.0);
+        item = new Item("Jeans", 100, 50 );
 
     }
 
@@ -67,21 +68,14 @@ public class CustomerTest {
     }
 
 
-//    @Test
-//    public void buyItem() {
-//        double itemPrice = item.getSellPrice();
-//        this.wallet -= itemPrice;
-//    }
-//
-//    @Test
-//    public void canReturnItem(){
-//        customer.addItemToShoppingCart(item);
-//        customer.buyItem(item);
-//        assertEquals(300, customer.getCustomerWallet(),0.1);
-//        customer.removeItemFromShoppingCart(item);
-//        customer.refundItem(item);
-//        assertEquals(300, customer.getCustomerWallet(),0.1);
-//    }
+    @Test
+    public void canBuyItem() {
+        customer.addItemToShoppingCart(item);
+        customer.buyItem(item);
+        assertEquals(400, customer.getCustomerWallet(), 0.01);
+
+    }
+
 }
 
 

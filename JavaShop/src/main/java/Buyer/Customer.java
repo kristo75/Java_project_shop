@@ -39,13 +39,16 @@ public class Customer {
 
 
 
-    public ArrayList<Item> getPaymentMethod(){
+    public ArrayList<PaymentMethod> getPaymentMethod(){
         return paymentMethods;
     }
 
-    public ArrayList<Item> getOwnedItems(){
-        return ownedItems;
-    }
+//    public ArrayList<Item> getOwnedItems(){
+//        return ownedItems.get();
+//    }
+//    public ArrayList<Item> getOwnedItemsCount() {
+//        return ownedItems.;
+//    }
 
     public int getShoppingCartItemCount() {
         return shoppingCart.size();
@@ -80,7 +83,6 @@ public class Customer {
     public ArrayList<Item> getShoppingCart() {
         return shoppingCart;
     }
-
 
 
 

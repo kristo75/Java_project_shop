@@ -45,23 +45,12 @@ public class Shop {
         return amount;
     }
 
-//    private String getPaymentMethod(Customer customer) {
-//        String amount = 0.0;
-//        ArrayList<Item> paymentMethod = customer.getPaymentMethod();
-//        for (Item item : paymentMethod) {
-//            amount += shop.getPaymentMethod();
-//        }
-//        return paymentMethod;
-//    }
 
     public void checkOut(Customer customer) {
         double shoppingCartPrice = calculateCartValue(customer);
         customer.removeMoneyFromWallet(shoppingCartPrice);
         this.till += shoppingCartPrice;
         customer.clearShoppingCart();
-// TODO: 30/01/2018 update checkout to increment sales 
-//        increase the sales property (?)
-//choose pref pay method, check balance,
     }
 
     
@@ -70,8 +59,6 @@ public class Shop {
         customer.addMoneyToWallet(shoppingCartPrice);
         this.till -= shoppingCartPrice;
         customer.clearShoppingCart();
-// TODO: 30/01/2018 update refund to increment refunds 
-//        decrease the sales property (?)
 
     }
 

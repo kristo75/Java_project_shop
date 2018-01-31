@@ -3,6 +3,7 @@ import Shop.Item;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +18,6 @@ public class CustomerTest {
     public void before(){
         customer = new Customer("Kris Anderson", 500.0);
         item = new Item("Jeans", 100, 50 );
-
     }
 
     @Test
@@ -45,7 +45,8 @@ public class CustomerTest {
     }
     @Test
     public void getShoppingCart() {
-        assertEquals("shirt",customer.getShoppingCart());
+        ArrayList<Item> expected = new ArrayList<>();
+        assertEquals(expected,customer.getShoppingCart());
     }
 
     @Test
@@ -59,6 +60,17 @@ public class CustomerTest {
         assertEquals(1, customer.getShoppingCartItemCount());
     }
 
+//    @Test
+//    public void customersOwnedItemsStartsEmpty(){
+//        assertEquals(0, customer.getOwnedItemsCount());
+//    }
+//
+//    @Test
+//    public void canAddItemToOwnedItems(){
+//        customer.addItemToOwnedItems(item);
+//        assertEquals(1, customer.getOwnedItems());
+//    }
+
     @Test
     public void canRemoveItemFromShoppingCart(){
         customer.addItemToShoppingCart(item);
@@ -68,6 +80,7 @@ public class CustomerTest {
     }
 
 
+
     @Test
     public void getShoppingCartItemCount() {
         customer.addItemToShoppingCart(item);
@@ -75,9 +88,11 @@ public class CustomerTest {
     }
 
 
-    @Test
-    public void getOwnedItems() {
-    }
+//    @Test
+//    public void getOwnedItems() {
+//        ArrayList<Item> expected = new ArrayList<>();
+//        assertEquals(expected, customer.getOwnedItems());
+//    }
 }
 
 

@@ -6,15 +6,19 @@ import Shop.Item;
 import java.util.ArrayList;
 
 public class Customer {
+    private ArrayList<PaymentMethod> paymentMethods;
     private String customerName;
     private double wallet;
     private ArrayList<Item> shoppingCart;
+    private double sellPrice;
+    private ArrayList<Item> ownedItems;
 
 
     public Customer(String customerName, double wallet){
         this.customerName = customerName;
         this.wallet = wallet;
-        this.shoppingCart = new ArrayList<Item>();
+        this.shoppingCart = new ArrayList<>();
+        this.paymentMethods = new ArrayList<>();
     }
 
     public String getCustomerName() {
@@ -34,27 +38,49 @@ public class Customer {
     }
 
 
+
+    public ArrayList<Item> getPaymentMethod(){
+        return paymentMethods;
+    }
+
+    public ArrayList<Item> getOwnedItems(){
+        return ownedItems;
+    }
+
     public int getShoppingCartItemCount() {
         return shoppingCart.size();
     }
 
+
     public void addItemToShoppingCart(Item item){
         this.shoppingCart.add(item);
+    }
+
+    public void addItemToOwnedItems(Item item){
+        this.ownedItems.add(item);
     }
 
     public void removeItemFromShoppingCart(Item item) {
         this.shoppingCart.remove(item);
     }
 
-    public void buyItem(Item item) {
-        double itemPrice = item.getSellPrice();
-        this.wallet -=itemPrice;
+
+    public void clearShoppingCart() {
+        this.shoppingCart.clear();
     }
 
-    public void refundItem(Item item) {
-        double itemPrice = item.getSellPrice();
-        this.wallet += itemPrice;
+    public void removeMoneyFromWallet(double amount) {
+        this.wallet -= amount;
     }
+
+    public void addMoneyToWallet(double amount) {
+        this.wallet += amount;
+    }
+
+    public ArrayList<Item> getShoppingCart() {
+        return shoppingCart;
+    }
+
 
 
 

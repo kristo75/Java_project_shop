@@ -1,8 +1,9 @@
 import Buyer.Customer;
 import Shop.Item;
-import Shop.Till;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,10 +36,16 @@ public class CustomerTest {
         assertEquals(500.0, customer.getCustomerWallet(), 0.1);
     }
 
+
+
     @Test
     public void setCustomerWallet(){
         customer.setCustomerWallet(450.0);
         assertEquals(450.0, customer.getCustomerWallet(), 0.1);
+    }
+    @Test
+    public void getShoppingCart() {
+        assertEquals("shirt",customer.getShoppingCart());
     }
 
     @Test
@@ -69,22 +76,7 @@ public class CustomerTest {
 
 
     @Test
-    public void canBuyItem() {
-        customer.addItemToShoppingCart(item);
-        customer.buyItem(item);
-        assertEquals(400, customer.getCustomerWallet(), 0.01);
-
-    }
-
-
-    @Test
-    public void canReturnItem(){
-        customer.addItemToShoppingCart(item);
-        customer.buyItem(item);
-        assertEquals(400, customer.getCustomerWallet(),0.1);
-        customer.removeItemFromShoppingCart(item);
-        customer.refundItem(item);
-        assertEquals(500, customer.getCustomerWallet(),0.1);
+    public void getOwnedItems() {
     }
 }
 

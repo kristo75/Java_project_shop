@@ -10,10 +10,7 @@ public class Stock<I> {
     }
 
 
-    public void addStock(String item) {
-        this.item = item;
-        this.stock.addStock(item);
-    }
+
 
 
 

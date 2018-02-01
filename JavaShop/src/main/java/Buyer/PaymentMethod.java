@@ -29,4 +29,8 @@ public class PaymentMethod {
         }
         this.accountBalance -= amount;
     }
+
+    public void credit(double amount) {
+        this.accountBalance += amount;
+    }
 }

@@ -1,4 +1,5 @@
 import Buyer.Customer;
+import Buyer.PaymentMethod;
 import Shop.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +13,37 @@ public class CustomerTest {
 
     Customer customer;
     Item item;
+    PaymentMethod paymentMethod;
 
 
     @Before
     public void before(){
-        customer = new Customer("Kris Anderson", 500.0);
+        paymentMethod = new PaymentMethod("Visa", 330);
+        customer = new Customer("Kris Anderson", paymentMethod);
         item = new Item("Jeans", 100, 50 );
+    }
+
+    @Test
+    public void hasNumberOfEntries(){
+        assertEquals(1, customer.getPaymentMethodsCount());
+    }
+
+    @Test
+    public void canAddPaymentMethodToArray(){
+        customer.addPaymentMethod(paymentMethod);
+        assertEquals(2, customer.getPaymentMethodsCount());
+    }
+
+    @Test
+    public void canGetFirstPaymentMethod(){
+        customer.addPaymentMethod(paymentMethod);
+        assertEquals("Visa", customer.getPaymentMethodsAtIndex(0).getType());
+    }
+
+    @Test
+    public void canGetSpecificPaymentMethodByType(){
+        PaymentMethod expected = customer.getPaymentMethod("Visa");
+        assertEquals(expected, paymentMethod);
     }
 
     @Test
@@ -31,18 +57,8 @@ public class CustomerTest {
         assertEquals("Simon Brown", customer.getCustomerName());
     }
 
-    @Test
-    public void getCustomerWallet(){
-        assertEquals(500.0, customer.getCustomerWallet(), 0.1);
-    }
 
 
-
-    @Test
-    public void setCustomerWallet(){
-        customer.setCustomerWallet(450.0);
-        assertEquals(450.0, customer.getCustomerWallet(), 0.1);
-    }
     @Test
     public void getShoppingCart() {
         ArrayList<Item> expected = new ArrayList<>();
@@ -85,6 +101,15 @@ public class CustomerTest {
     public void getShoppingCartItemCount() {
         customer.addItemToShoppingCart(item);
         assertEquals(1, customer.getShoppingCartItemCount());
+    }
+
+
+    @Test
+    public void canPayWithSpecificPaymentMethod(){
+        customer.pay(100.0, "Visa");
+        // shop sell price is 100
+        // Visa starts with 330 available
+        assertEquals(230, customer.getPaymentMethod("Visa").getBalance(), 0.001);
     }
 
 

@@ -32,6 +32,12 @@ public class PaymentMethodTest {
     }
 
     @Test
+    public void canCreditAccountBalance(){
+        paymentMethod.credit(50);
+        assertEquals(350, paymentMethod.getBalance(), 0.01);
+    }
+
+    @Test
     public void canNotDeductMoreThanBalance(){
         paymentMethod.debit(350.0);
         assertEquals(300, paymentMethod.getBalance(), 0.01);

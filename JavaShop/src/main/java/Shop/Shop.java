@@ -1,6 +1,7 @@
 package Shop;
 
 import Buyer.Customer;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.ArrayList;
 
@@ -46,17 +47,17 @@ public class Shop {
     }
 
 
-    public void checkOut(Customer customer) {
+    public void checkOut(Customer customer, String paymentMethodType) {
         double shoppingCartPrice = calculateCartValue(customer);
-        customer.removeMoneyFromWallet(shoppingCartPrice);
+        customer.pay(shoppingCartPrice, paymentMethodType);
         this.till += shoppingCartPrice;
         customer.clearShoppingCart();
     }
 
     
-    public void refundShoppingCart(Customer customer) {
+    public void refundShoppingCart(Customer customer, String paymentMethodType) {
         double shoppingCartPrice = calculateCartValue(customer);
-        customer.addMoneyToWallet(shoppingCartPrice);
+        customer.getPaymentMethod(paymentMethodType).credit(shoppingCartPrice);
         this.till -= shoppingCartPrice;
         customer.clearShoppingCart();
 

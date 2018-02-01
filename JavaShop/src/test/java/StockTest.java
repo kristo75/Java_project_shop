@@ -6,26 +6,27 @@ import static org.junit.Assert.assertEquals;
 
 public class StockTest {
 
-//    Shop shop;
-//    Stock<ItemName> stock;
-//    private Item item;
-//
-//
-//    @Before
-//    public void before() {
-//        Stock<ItemName> stock = new Stock<ItemName>();
-//    }
-//
-//
-//    @Test
-//    public void shopStockStartsEmpty() {
-//        assertEquals(0, stock.getStockCount());
-//    }
+    Shop shop;
+    Stock<ItemName> stock;
+    private Item item;
+
+
+    @Before
+    public void before() {
+        Stock<ItemName> stock = new Stock<>(item, 4);
+    }
+
+
+    @Test
+    public void customersStockStartsEmpty(){
+        assertEquals(0, stock.getStockItemCount());
+    }
+}
 //
 //
 //    @Test
 //    public void canAddStockToShop() {
-//        stock.addStock("JEANS");
+//        stock.addStock("Jeans");
 //        assertEquals(1, stock.getStockCount());
 //    }
 //
@@ -37,4 +38,4 @@ public class StockTest {
 //        stock.removeStock("JEANS");
 //        assertEquals(0, stock.getStockCount());
 //    }
-}
+//}

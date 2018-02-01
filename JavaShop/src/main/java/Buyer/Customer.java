@@ -8,18 +8,32 @@ import java.util.ArrayList;
 public class Customer {
     private ArrayList<PaymentMethod> paymentMethods;
     private String customerName;
-    private double wallet;
+    private PaymentMethod wallet;
     private ArrayList<Item> shoppingCart;
     private double sellPrice;
     private ArrayList<Item> ownedItems;
 
 
-    public Customer(String customerName, double wallet){
+    public Customer(String customerName, PaymentMethod paymentMethod){
         this.customerName = customerName;
-        this.wallet = wallet;
         this.shoppingCart = new ArrayList<>();
         this.paymentMethods = new ArrayList<>();
+        paymentMethods.add(paymentMethod);
+
     }
+
+    public int getPaymentMethodsCount() {
+        return this.paymentMethods.size();
+    }
+
+    public void addPaymentMethod(PaymentMethod paymentMethod){
+        this.paymentMethods.add(paymentMethod);
+    }
+
+    public PaymentMethod getPaymentMethodsAtIndex(int index){
+        return this.paymentMethods.get(index);
+    }
+
 
     public String getCustomerName() {
         return customerName;
@@ -29,25 +43,15 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public double getCustomerWallet() {
-        return wallet;
-    }
-
-    public void setCustomerWallet(double customerWallet) {
-        this.wallet = customerWallet;
-    }
 
 
 
-    public ArrayList<PaymentMethod> getPaymentMethod(){
-        return paymentMethods;
-    }
 
 //    public ArrayList<Item> getOwnedItems(){
-//        return ownedItems.get();
+//        return ownedItems;
 //    }
 //    public ArrayList<Item> getOwnedItemsCount() {
-//        return ownedItems.;
+//        return ownedItems.size;
 //    }
 
     public int getShoppingCartItemCount() {
@@ -72,18 +76,32 @@ public class Customer {
         this.shoppingCart.clear();
     }
 
-    public void removeMoneyFromWallet(double amount) {
-        this.wallet -= amount;
-    }
 
-    public void addMoneyToWallet(double amount) {
-        this.wallet += amount;
-    }
 
     public ArrayList<Item> getShoppingCart() {
         return shoppingCart;
     }
 
 
+//    public void makePayment(double shoppingCartPrice, PaymentMethod paymentMethod) {
+//        getP
+//    }
 
+    public PaymentMethod getPaymentMethod(String paymentMethodType) {
+        for (PaymentMethod paymentMethod: paymentMethods){
+            if (paymentMethod.getType().equals(paymentMethodType)){
+                return paymentMethod;
+            }
+        }
+        return null;
+    }
+
+    public void pay(double price, String paymentMethodType) {
+        PaymentMethod paymentMethod = getPaymentMethod(paymentMethodType);
+        if (paymentMethod.getBalance() >= price){
+            paymentMethod.debit(price);
+        }
+
+
+    }
 }

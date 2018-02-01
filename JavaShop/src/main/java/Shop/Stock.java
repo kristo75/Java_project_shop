@@ -1,15 +1,12 @@
 package Shop;
 
-import java.util.ArrayList;
-
 public class Stock<I> {
     private Stock<Item> stock;
-    private ArrayList<ItemName> stockCount;
+    private Item stockCount;
     private String item;
 
-    public Stock(ArrayList<ItemName> stockItem, double stock) {
+    public Stock(Item stockItem, double stock) {
         this.stockCount = stockItem;
-        this.stockCount = new ArrayList<>();
     }
 
 
@@ -18,12 +15,10 @@ public class Stock<I> {
         this.stock.addStock(item);
     }
 
-    public ArrayList<ItemName> getStockCount() {
-        return this.stockCount;
-    }
 
-    public void removeStock(String itemToRemove) {
-        this.removeStock(itemToRemove);
+
+    public int getStockItemCount() {
+        return this.getStockItemCount();
     }
 }
 
